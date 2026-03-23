@@ -147,3 +147,6 @@ function getUserDirection(direction: Direction): void {
 }
 
 getUserDirection(Direction.LEFT);
+
+
+//type casting / assertion

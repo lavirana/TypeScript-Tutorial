@@ -105,3 +105,4 @@ function getUserDirection(direction) {
 }
 getUserDirection(Direction.LEFT);
 export {};
+//type casting / assertion

@@ -1,10 +1,10 @@
 # TypeScript-Tutorial
 
-TypeScript Tutorial — My Learning Notes
+# TypeScript Tutorial — My Learning Notes
 
 Personal learning notes while studying TypeScript from scratch. Simple explanations + code examples.
 
-What is TypeScript?
+# What is TypeScript?
 
 TypeScript is a superset of JavaScript — meaning all valid JavaScript code is also valid TypeScript. TypeScript just adds extra features on top of JavaScript, mainly static typing.
 
@@ -28,7 +28,7 @@ npm install -g typescript
 tsc --version
 Important Commands
 
-Command	What it does
+# Command	What it does
 npm init -y	Start a new project — creates package.json
 npx tsc --init	Creates tsconfig.json — TypeScript configuration file
 npx tsc --watch	Watches files in src folder and auto-transpiles on save
@@ -36,45 +36,47 @@ tsc	Compile TypeScript to JavaScript once
 npx	Local package runner — runs packages without installing globally
 Basic Types
 
-// String
+# String
 let name: string = "Ashish Rana";
 
-// Number — covers integers and decimals
+# Number — covers integers and decimals
 let age: number = 25;
 let price: number = 99.99;
 
-// Boolean
+# Boolean
 let isActive: boolean = true;
 let isLoggedIn: boolean = false;
 Type Inference
 
 TypeScript is smart — it can automatically guess the type without you writing it.
 
-// You do NOT need to write the type explicitly
+# You do NOT need to write the type explicitly
 let name = "Ashish";   // TypeScript knows it's a string
 let age  = 25;         // TypeScript knows it's a number
 
-// Now if you try to assign wrong type — TypeScript gives error
+# Now if you try to assign wrong type — TypeScript gives error
 name = 100;  // ❌ Error: Type 'number' is not assignable to type 'string'
 Union Type
 
 A variable that can hold more than one type.
 
-// age can be a number OR a string
+
+# age can be a number OR a string
 let age: number | string;
+
 
 age = 25;       // ✅ valid
 age = "twenty"; // ✅ valid
 age = true;     // ❌ Error — boolean not allowed
 Any and Unknown Types
 
-// any — disables type checking — avoid using it
+# any — disables type checking — avoid using it
 let data: any = "hello";
 data = 123;      // ✅ no error
 data = true;     // ✅ no error — TypeScript stops checking
 
-// unknown — safer version of any
-// You must check the type before using it
+# unknown — safer version of any
+# You must check the type before using it
 let input: unknown = "hello";
 
 if (typeof input === "string") {
@@ -88,10 +90,10 @@ Type Alias
 
 Create a custom name for a type — reuse it anywhere.
 
-// Define once
+# Define once
 type UserID = number | string;
 
-// Use anywhere
+# Use anywhere
 let id1: UserID = 101;
 let id2: UserID = "USR-202";
 Interface
@@ -105,7 +107,7 @@ interface User {
     age?:    number;  // ? means optional
 }
 
-// Object must follow the interface shape
+# Object must follow the interface shape
 const user: User = {
     id:    1,
     name:  "Ashish Rana",
@@ -113,32 +115,32 @@ const user: User = {
 };
 Objects in TypeScript
 
-// Define object type inline
+# Define object type inline
 const product: { name: string; price: number; active: boolean } = {
     name:   "MacBook Air",
     price:  1200,
     active: true,
 };
 
-// Better way — use Interface (see above)
+# Better way — use Interface (see above)
 Arrays
 
-// Array of strings
+# Array of strings
 let skills: string[] = ["PHP", "Laravel", "Vue"];
 
-// Array of numbers
+# Array of numbers
 let scores: number[] = [95, 87, 92];
 
-// Array of mixed types using union
+# Array of mixed types using union
 let mixed: (string | number)[] = ["Ashish", 25, "Developer"];
 Tuples
 
 A Tuple is an array with a fixed size and fixed types at each position.
 
-// Normal array — any length, same type
+# Normal array — any length, same type
 let arr: number[] = [1, 2, 3, 4, 5]; // any length
 
-// Tuple — fixed length, each position has specific type
+# Tuple — fixed length, each position has specific type
 let user: [number, string, boolean] = [1, "Ashish", true];
 //          ↑        ↑        ↑
 //         id      name    active
@@ -147,13 +149,14 @@ user[0]; // 1       — number
 user[1]; // "Ashish" — string
 user[2]; // true    — boolean
 
-// ❌ Wrong order gives error
+# ❌ Wrong order gives error
 let wrong: [number, string] = ["Ashish", 1]; // Error!
-Enums
+
+# Enums
 
 Enums define a set of named constants — makes code more readable.
 
-// Numeric enum — default starts at 0
+# Numeric enum — default starts at 0
 enum Direction {
     Up,     // 0
     Down,   // 1
@@ -164,7 +167,7 @@ enum Direction {
 let move: Direction = Direction.Up;
 console.log(move); // 0
 
-// String enum — more readable
+# String enum — more readable
 enum Status {
     Active   = "ACTIVE",
     Inactive = "INACTIVE",
@@ -175,14 +178,14 @@ let userStatus: Status = Status.Active;
 console.log(userStatus); // "ACTIVE"
 Functions — void and never
 
-// void — function runs but returns nothing
+# void — function runs but returns nothing
 function greet(name: string): void {
     console.log("Hello, " + name);
     // no return statement
 }
 
-// never — function NEVER finishes
-// Either throws an error or runs forever
+# never — function NEVER finishes
+# Either throws an error or runs forever
 function throwError(message: string): never {
     throw new Error(message); // never returns
 }
@@ -196,7 +199,8 @@ Simple difference:
 
 void = function finishes but returns nothing
 never = function never finishes at all
-Type Casting and Type Assertion
+
+# Type Casting and Type Assertion
 
 Sometimes you know more about a type than TypeScript does — you can tell TypeScript what type something is.
 
