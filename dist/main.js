@@ -104,5 +104,28 @@ function getUserDirection(direction) {
     }
 }
 getUserDirection(Direction.LEFT);
-export {};
 //type casting / assertion
+function addOrConcat(a, b, c) {
+    if (c === "add") {
+        return a + b;
+    }
+    else {
+        return "" + a + b;
+    }
+}
+console.log(addOrConcat(2, 5, "concat"));
+const value = addOrConcat(2, 2, "concat");
+const value2 = addOrConcat(2, 3, "add");
+//dom
+// select input field
+const nameInput = document.getElementById("name");
+const ageInput = document.getElementById("age");
+const form = document.getElementById("user-form");
+const output = document.getElementById("output");
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nameValue = nameInput.value;
+    const ageValue = ageInput.value;
+    output.innerHTML = `<p> ${nameValue} : ${ageValue} </p>`;
+});
+export {};

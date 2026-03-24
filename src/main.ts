@@ -150,3 +150,31 @@ getUserDirection(Direction.LEFT);
 
 
 //type casting / assertion
+
+function addOrConcat(a: number, b: number, c: "add"|"concat"):number|string {
+    if(c === "add"){
+        return a + b;
+    }else{
+        return "" + a + b;
+    }
+}
+
+console.log(addOrConcat(2, 5, "concat"));
+
+const value: string = addOrConcat(2, 2, "concat") as string;
+const value2: number = addOrConcat(2, 3, "add") as number;
+
+//dom
+// select input field
+
+const nameInput = document.getElementById("name")! as HTMLInputElement;
+const ageInput = document.getElementById("age")! as HTMLInputElement;
+const form = document.getElementById("user-form")! as HTMLFormElement;
+const output =  document.getElementById("output")! as HTMLElement;
+
+form.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    const nameValue = nameInput.value;
+    const ageValue =  ageInput.value;
+    output.innerHTML = `<p> ${nameValue} : ${ageValue} </p>`;
+});
