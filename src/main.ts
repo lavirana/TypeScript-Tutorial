@@ -256,6 +256,10 @@ const tig = new Tiger('Tiger');
 console.log(tig.makeSound());
 
 
+
+
+
+
 //generics
 //identity function with generics
 
@@ -278,3 +282,9 @@ function identityWithConstraints<CustomType extends string | number>(data: Custo
 
 const valS = identityWithConstraints<string>("Hello there");
 const valN = identityWithConstraints<number>(4);
+
+function getFirstElement<CustomType>(arr: CustomType[]): CustomType {
+    return arr[0];
+}
+
+console.log(getFirstElement<string>(["abcd","efgh"]));

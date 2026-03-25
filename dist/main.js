@@ -195,4 +195,8 @@ function identityWithConstraints(data) {
 }
 const valS = identityWithConstraints("Hello there");
 const valN = identityWithConstraints(4);
+function getFirstElement(arr) {
+    return arr[0];
+}
+console.log(getFirstElement(["abcd", "efgh"]));
 export {};
