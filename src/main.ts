@@ -172,9 +172,39 @@ const ageInput = document.getElementById("age")! as HTMLInputElement;
 const form = document.getElementById("user-form")! as HTMLFormElement;
 const output =  document.getElementById("output")! as HTMLElement;
 
-form.addEventListener("submit", (e)=>{
+form.addEventListener("submit", (e) => {
     e.preventDefault();
     const nameValue = nameInput.value;
     const ageValue =  ageInput.value;
-    output.innerHTML = `<p> ${nameValue} : ${ageValue} </p>`;
+     output.innerHTML = `<p> ${nameValue} : ${ageValue} </p>`;
 });
+
+
+
+//classes
+class Animal {
+    name: string;
+    age: number;
+    readonly species: string;
+    public isHungry: boolean = true; // class fields
+
+constructor(name: string, age: number, species: string){
+    this.name =  name;
+    this.age = age;
+    this.species = species;
+}
+    get hungerStatus(): string {
+        return this.isHungry ? `${this.name}` : `${this.name} is full`;
+    }
+    feed(food:string){
+        this.isHungry = false;
+        console.log(`${this.name} has been fed with ${food}`);
+    }
+}
+
+const tom = new Animal("Lion", 9, "Dog");
+console.log(tom);
+tom.name = "Cat";
+console.log(tom.hungerStatus);
+tom.feed("bread");
+console.log(tom.hungerStatus);

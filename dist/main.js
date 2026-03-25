@@ -128,4 +128,26 @@ form.addEventListener("submit", (e) => {
     const ageValue = ageInput.value;
     output.innerHTML = `<p> ${nameValue} : ${ageValue} </p>`;
 });
+//classes
+class Animal {
+    constructor(name, age, species) {
+        this.isHungry = true; // class fields
+        this.name = name;
+        this.age = age;
+        this.species = species;
+    }
+    get hungerStatus() {
+        return this.isHungry ? `${this.name}` : `${this.name} is full`;
+    }
+    feed(food) {
+        this.isHungry = false;
+        console.log(`${this.name} has been fed with ${food}`);
+    }
+}
+const tom = new Animal("Lion", 9, "Dog");
+console.log(tom);
+tom.name = "Cat";
+console.log(tom.hungerStatus);
+tom.feed("bread");
+console.log(tom.hungerStatus);
 export {};
