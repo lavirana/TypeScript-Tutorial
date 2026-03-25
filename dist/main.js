@@ -131,9 +131,11 @@ form.addEventListener("submit", (e) => {
 //classes
 class Animal {
     constructor(name, age, species) {
-        this.isHungry = true; // class fields
         this.name = name;
         this.age = age;
+        this.isHungry = true; // class fields
+        //  this.name = name;
+        //this.age = age;
         this.species = species;
     }
     get hungerStatus() {
@@ -143,11 +145,54 @@ class Animal {
         this.isHungry = false;
         console.log(`${this.name} has been fed with ${food}`);
     }
+    get info() {
+        return `${this.name} is a ${this.age} year old ${this.species}`;
+    }
+}
+class Dog extends Animal {
+    constructor(name, age, breed, skills) {
+        super(name, age, "Dog");
+        this.bread = breed;
+        this.skills = skills;
+    }
+}
+class animal2 {
+    constructor(name) {
+        this.name = name;
+    }
+}
+class Tiger extends animal2 {
+    makeSound() {
+        return `${this.name} is roaring`;
+    }
 }
 const tom = new Animal("Lion", 9, "Dog");
-console.log(tom);
+//console.log(tom);
 tom.name = "Cat";
 console.log(tom.hungerStatus);
 tom.feed("bread");
 console.log(tom.hungerStatus);
+console.log(tom.info);
+const tom2 = new Dog("tom", 6, "greyhound", ["sit", "come"]);
+console.log(tom2.hungerStatus);
+tom.feed("milk");
+console.log(tom.hungerStatus);
+const tig = new Tiger('Tiger');
+console.log(tig.makeSound());
+//generics
+//identity function with generics
+function identity(data) {
+    return data;
+}
+const val = identity("Ashish");
+val.toUpperCase();
+const val2 = identity(5);
+val2.toString();
+const val3 = identity(true);
+val3.valueOf();
+function identityWithConstraints(data) {
+    return data;
+}
+const valS = identityWithConstraints("Hello there");
+const valN = identityWithConstraints(4);
 export {};
