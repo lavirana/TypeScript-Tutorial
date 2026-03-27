@@ -8,8 +8,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "# TypeScript Tutorial — My Learning Notes",
   "dependencies": {
     "typescript": "^5.9.3"
-  }
+  },
+  "devDependencies": {}
 }

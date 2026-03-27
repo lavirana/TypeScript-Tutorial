@@ -1,3 +1,12 @@
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 let firstname = "Ashish";
 console.log(firstname);
 let someVariable;
@@ -41,7 +50,7 @@ try {
     throwError("Something went wrong!");
 }
 catch (e) {
-    console.log("I caught the error: " + e.message);
+    //console.log("I caught the error: " + e.message);
 }
 function combine(a, b) {
     if (typeof a === "number" && typeof b === "number") {
@@ -199,4 +208,27 @@ function getFirstElement(arr) {
     return arr[0];
 }
 console.log(getFirstElement(["abcd", "efgh"]));
+function dataFetch(url) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const response = yield fetch(url);
+            const data = yield response.json();
+            return data;
+        }
+        catch (error) {
+            console.error("Error fetching data:", error);
+            throw error;
+        }
+    });
+}
+const url = "https://jsonplaceholder.typicode.com/todos";
+dataFetch(url).then(data => {
+    const title = data.map((item) => item.title);
+    console.log(title);
+});
+const url2 = "https://jsonplaceholder.typicode.com/posts";
+dataFetch(url2).then(data => {
+    const body = data.map((item) => item.body);
+    console.log(body);
+});
 export {};

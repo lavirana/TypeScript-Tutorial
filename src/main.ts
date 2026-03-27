@@ -50,7 +50,7 @@ function throwError(message: string): never {
 try {
     throwError("Something went wrong!");
 } catch (e) {
-    console.log("I caught the error: " + e.message);
+    //console.log("I caught the error: " + e.message);
 }
 
 // function overloading
@@ -288,3 +288,43 @@ function getFirstElement<CustomType>(arr: CustomType[]): CustomType {
 }
 
 console.log(getFirstElement<string>(["abcd","efgh"]));
+
+
+
+
+interface  Todo {
+    "userId": number;
+    "id": number;
+    "title": string;
+    "completed": boolean;
+}
+
+interface Post {
+    "userId": number;
+    "id": number;
+    "title": string;
+    "body": string;
+}
+
+async function dataFetch<T>(url: string): Promise<T[]> {
+    try {
+        const response = await fetch(url);
+        const data: T[] = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
+    }
+}
+
+const url = "https://jsonplaceholder.typicode.com/todos";
+dataFetch<Todo>(url).then(data => {
+    const title = data.map((item: { title: string }) => item.title);
+    console.log(title);
+});
+
+const url2 = "https://jsonplaceholder.typicode.com/posts";
+dataFetch<Post>(url2).then(data => {
+    const body = data.map((item: { title: string }) => item.body);
+    console.log(body);
+});
